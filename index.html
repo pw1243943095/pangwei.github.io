@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>中核二三三澳项目部安全月</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003a70', // 中核蓝
+                        secondary: '#0052a2', // 中核蓝-浅
+                        accent: '#e63946', // 警示红
+                        neutral: '#f1faee', // 背景色
+                        'text-light': '#f1faee',
+                        'text-dark': '#1d3557',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 58, 112, 0.2);
+            }
+            .gradient-bg {
+                background: linear-gradient(135deg, #003a70 0%, #0052a2 100%);
+            }
+            /* 新增本地背景图样式 */
+            .bg-nuclear-site {
+                background-image: url('img/背景图.jpg'); /* 本地背景图路径（需与HTML同级的img文件夹） */
+                background-size: cover;             /* 覆盖整个容器 */
+                background-position: center;        /* 居中显示 */
+                background-attachment: fixed;       /* 背景固定不随滚动条移动 */
+            }
+            .bg-overlay {
+                background: rgba(0, 58, 112, 0.6);  /* 中核蓝半透明遮罩（增强文字可读性） */
+            }
+            /* 案例轮播样式 */
+            .carousel-container {
+                overflow: hidden;
+                position: relative;
+            }
+            .carousel-track {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+            .carousel-item {
+                min-width: 100%;
+                flex-shrink: 0;
+            }
+            .carousel-indicator {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.5);
+                transition: background-color 0.3s;
+            }
+            .carousel-indicator.active {
+                background-color: white;
+            }
+            .slide-in {
+                animation: slideIn 0.5s ease forwards;
+            }
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        }
+    </style>
+</head>
+<!-- 修改body为背景图+遮罩结构 -->
+<body class="min-h-screen">
+    <!-- 背景图层 -->
+    <div class="fixed inset-0 bg-nuclear-site z-0"></div>
+    <!-- 半透明遮罩层 -->
+    <div class="fixed inset-0 bg-overlay z-10"></div>
+    <!-- 内容主区域（层级高于背景） -->
+    <div class="relative z-20">
+        <!-- 主场景 -->
+        <div class="container mx-auto px-4 py-8" id="mainScene">
+            <!-- 顶部标题区域 -->
+            <div class="text-center mb-8 pt-4">
+                <div class="inline-block px-6 py-2 rounded-full bg-primary/10 mb-4">
+                    <span class="text-text-light font-medium">中核二三三澳项目部</span> <!-- 文字改为浅色 -->
+                </div>
+                <h1 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold text-text-light mb-2 leading-tight">
+                    安全月活动
+                </h1>
+                <p class="text-text-light/90 text-[clamp(1rem,3vw,1.2rem)]">管道队精益组制作</p> <!-- 文字改为浅色 -->
+            </div>
+
+            <!-- 图片展示区域 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="relative rounded-xl overflow-hidden shadow-lg card-hover">
+                    <img src="img/1.jpg" alt="核岛现场管道区域安全隐患示例" class="w-full aspect-video object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg">管道区域安全</h3>
+                            <p class="text-white/80 text-sm">识别管道作业常见隐患</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-lg card-hover">
+                    <img src="img/2.png" alt="起重作业区域安全防护示例" class="w-full aspect-video object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg">起重作业规范</h3>
+                            <p class="text-white/80 text-sm">掌握起重安全操作要点</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-lg card-hover">
+                    <img src="img/3.jpg" alt="焊接作业安全操作示例" class="w-full aspect-video object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg">焊接安全要点</h3>
+                            <p class="text-white/80 text-sm">预防焊接作业安全风险</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-lg card-hover">
+                    <img src="img/4.jpg" alt="车间安全标识规范示例" class="w-full aspect-video object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg">安全标识规范</h3>
+                            <p class="text-white/80 text-sm">识别常见安全警示标识</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开始学习按钮 -->
+            <div class="text-center mt-8">
+                <button class="gradient-bg text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2" onclick="switchScene('levelScene')">
+                    <i class="fa fa-play-circle mr-2"></i> 开始学习
+                </button>
+            </div>
+        </div>
+
+        <!-- 关卡选择场景 -->
+        <div class="container mx-auto px-4 py-8 hidden" id="levelScene">
+            <!-- 返回按钮 -->
+            <div class="mb-6">
+                <button class="text-text-light hover:text-secondary transition-colors" onclick="switchScene('mainScene')"> <!-- 文字改为浅色 -->
+                    <i class="fa fa-arrow-left mr-2 text-text-light"></i> 返回
+                </button>
+            </div>
+
+            <!-- 关卡标题 -->
+            <div class="text-center mb-10">
+                <h2 class="text-[clamp(1.5rem,4vw,2rem)] font-bold text-text-light mb-2">选择学习关卡</h2> <!-- 文字改为浅色 -->
+                <p class="text-text-light/90 max-w-md mx-auto">深入学习不同作业场景的安全隐患识别与预防措施</p> <!-- 文字改为浅色 -->
+            </div>
+
+            <!-- 关卡选择卡片 -->
+            <div class="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
+                <a href="#" class="block bg-white/90 rounded-xl shadow-md overflow-hidden card-hover" onclick="gotoLevel('管道')"> <!-- 卡片背景改为半透明白 -->
+                    <div class="flex items-center p-5">
+                        <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                            <i class="fa fa-pipe text-primary text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-primary">管道作业安全隐患</h3>
+                            <p class="text-text-dark/60 text-sm mt-1">了解管道安装、维护中的安全风险</p>
+                        </div>
+                        <div class="ml-auto">
+                            <i class="fa fa-arrow-right text-primary/70"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="block bg-white/90 rounded-xl shadow-md overflow-hidden card-hover" onclick="gotoLevel('起重')"> <!-- 卡片背景改为半透明白 -->
+                    <div class="flex items-center p-5">
+                        <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                            <i class="fa fa-crane text-primary text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-primary">起重作业安全隐患</h3>
+                            <p class="text-text-dark/60 text-sm mt-1">掌握起重机操作与吊装安全规范</p>
+                        </div>
+                        <div class="ml-auto">
+                            <i class="fa fa-arrow-right text-primary/70"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="block bg-white/90 rounded-xl shadow-md overflow-hidden card-hover" onclick="gotoLevel('焊接')"> <!-- 卡片背景改为半透明白 -->
+                    <div class="flex items-center p-5">
+                        <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                            <i class="fa fa-fire text-primary text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-primary">焊接作业安全隐患</h3>
+                            <p class="text-text-dark/60 text-sm mt-1">学习焊接过程中的防护与风险控制</p>
+                        </div>
+                        <div class="ml-auto">
+                            <i class="fa fa-arrow-right text-primary/70"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 案例学习场景 -->
+        <div class="container mx-auto px-4 py-8 hidden" id="caseScene">
+            <!-- 返回按钮 -->
+            <div class="mb-6">
+                <button class="text-text-light hover:text-secondary transition-colors" onclick="switchScene('levelScene')">
+                    <i class="fa fa-arrow-left mr-2 text-text-light"></i> 返回
+                </button>
+            </div>
+
+            <!-- 案例标题（动态显示领域名称） -->
+            <div class="text-center mb-6">
+                <h2 class="text-[clamp(1.5rem,4vw,2rem)] font-bold text-text-light mb-2" id="caseTitle">管道作业安全隐患案例</h2>
+                <div class="flex justify-center space-x-2 mb-4" id="caseIndicators">
+                    <!-- 指示器将由JS动态生成 -->
+                </div>
+            </div>
+
+            <!-- 案例轮播容器 -->
+            <div class="carousel-container rounded-xl overflow-hidden shadow-xl mb-8">
+                <div class="carousel-track" id="caseTrack">
+                    <!-- 案例卡片将由JS动态生成 -->
+                </div>
+                
+                <!-- 滑动控制按钮 -->
+                <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all" id="prevBtn">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all" id="nextBtn">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- 案例导航 -->
+            <div class="flex justify-between items-center mt-8">
+                <button class="text-text-light hover:text-secondary transition-colors" id="firstCase">
+                    <i class="fa fa-step-backward mr-2"></i> 第一个
+                </button>
+                <div class="text-text-light" id="casePosition">1 / 10</div>
+                <button class="text-text-light hover:text-secondary transition-colors" id="lastCase">
+                    最后一个 <i class="fa fa-step-forward ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 场景切换函数
+        function switchScene(sceneId) {
+            document.querySelectorAll('.container').forEach(container => {
+                container.classList.add('hidden');
+            });
+            document.getElementById(sceneId).classList.remove('hidden');
+            
+            // 如果切换到案例场景，加载对应案例
+            if (sceneId === 'caseScene') {
+                loadCases(currentLevel);
+            }
+        }
+
+        // 关卡跳转函数
+        let currentLevel = '';
+        function gotoLevel(levelName) {
+            currentLevel = levelName;
+            // 修改URL参数（不会刷新页面）
+            history.replaceState(null, null, `?level=${levelName}`);
+            switchScene('caseScene');
+        }
+
+        // 安全隐患案例数据
+        const safetyCases = {
+            '管道': [
+                {
+                    id: 1,
+                    title: '管道支架缺少防撞棉',
+                    image: 'img/支架缺乏防撞棉.jpg',
+                    description: '管道支架未安装防撞棉，存在碰撞损伤风险。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '为管道支架加装防撞棉，降低碰撞损害可能。'
+                },
+                {
+                    id: 2,
+                    title: '管道存放无防滚动措施',
+                    image: 'img/管道存放无防滚动措施.png',
+                    description: '管道存放未采取防滚动措施，易引发滚动滑落危险。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '在管道存放处设置止挡装置或固定架，防止管道滚动移位。'
+                },
+                {
+                    id: 3,
+                    title: '管道支撑不满足要求',
+                    image: 'img/管道支撑不满足要求.png',
+                    description: '管道支撑不符合规范要求，存在结构失稳风险。',
+                    hazardLevel: '中',
+                    preventiveMeasures: '按照标准调整或加固管道支撑结构，确保支撑稳固达标。'
+                },
+                {
+                    id: 4,
+                    title: '防火布拉设不规范',
+                    image: 'img/防火布拉设不规范.png',
+                    description: '防火布铺设不符合标准要求，存在火灾防护失效隐患。',
+                    hazardLevel: '中',
+                    preventiveMeasures: '依照规范重新正确铺设防火布，并加强日常检查维护。'
+                },
+                {
+                    id: 5,
+                    title: '管道支撑二次防护',
+                    image: 'img/管道支撑二次防护.png',
+                    description: '管道支撑未设置二次防护，一旦初次支撑失效易引发管道坠落等严重后果。',
+                    hazardLevel: '中',
+                    preventiveMeasures: '增设管道支撑二次防护结构，如安全绳、备用支架等，定期检查维护确保有效。'
+                }
+            ],
+            '起重': [
+                {
+                    id: 1,
+                    title: '拒绝超载作业',
+                    image: 'img/拒绝超载作业.jpg',
+                    description: '起重机起吊重量超过额定载荷，可能导致起重机倾覆、钢丝绳断裂等严重事故。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '作业前明确被吊物体重量，严格按照起重机额定载荷作业；安装超载限制器并定期校验。'
+                },
+                {
+                    id: 2,
+                    title: '吊带捆绑使用不规范',
+                    image: 'img/吊带捆绑使用不规范.png',
+                    description: '吊带捆绑方式不符合规范，存在吊装脱落风险。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '按标准规范吊带捆绑方法，加强吊装前检查。'
+                },
+                {
+                    id: 3,
+                    title: '吊具使用不当',
+                    image: 'img/吊具使用不当.jpg',
+                    description: '吊钩、吊索等吊具选择不当或使用磨损的吊具，可能导致吊物坠落。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '根据被吊物体的形状、重量选择合适的吊具；定期检查吊具的完好情况，报废不合格吊具。'
+                },
+                {
+                    id: 4,
+                    title: '起重机械基础不稳固',
+                    image: 'img/起重机械基础不稳固.jpg',
+                    description: '起重机械基础未夯实或地脚螺栓松动，导致在作业过程中发生倾斜。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '起重机械安装前对基础进行验收，确保符合设计要求；作业前检查安全情况。'
+                },
+                {
+                    id: 5,
+                    title: '起重作业区域未隔离',
+                    image: 'img/起重作业区域未隔离.png',
+                    description: '起重作业区域未设置警示标识和隔离措施，无关人员进入作业区域，可能被吊物砸伤。',
+                    hazardLevel: '中',
+                    preventiveMeasures: '起重作业前在作业区域周围设置警示标识和围栏，禁止无关人员进入；派专人进行监护。'
+                }
+            ],
+            '焊接': [
+                {
+                    id: 1,
+                    title: '焊接防护不足',
+                    image: 'img/焊接防护不足.png',
+                    description: '焊工未佩戴防护面罩、手套等防护用品，可能导致弧光灼伤眼睛、皮肤，飞溅物烫伤。',
+                    hazardLevel: '中',
+                    preventiveMeasures: '焊工必须正确佩戴符合标准的防护面罩、手套、工作服等防护用品；设置防护屏，减少弧光对他人的影响。'
+                },
+                {
+                    id: 2,
+                    title: '焊接场所通风不良',
+                    image: 'img/焊接场所通风不良.jpg',
+                    description: '焊接过程中产生的烟尘和有害气体无法及时排出，长期吸入可能导致焊工职业健康问题。',
+                    hazardLevel: '中',
+                    preventiveMeasures: '焊接场所应设置良好的通风设施，确保空气流通；在封闭空间内焊接时，必须使用局部排风装置。'
+                },
+                {
+                    id: 3,
+                    title: '电焊机漏电',
+                    image: 'img/电焊机漏电.png',
+                    description: '电焊机绝缘损坏或接地不良，可能导致操作人员触电。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '定期检查电焊机的绝缘性能和接地情况，确保良好；操作人员应穿戴绝缘鞋和手套。'
+                },
+                {
+                    id: 4,
+                    title: '易燃物未清理',
+                    image: 'img/易燃物未清理.png',
+                    description: '焊接作业前未清理周围易燃物，焊接火花可能引燃易燃物，引发火灾。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '焊接作业前清理周围易燃物，配备灭火器材；无法清理时，采取遮挡、隔离等防护措施。'
+                },
+                {
+                    id: 5,
+                    title: '管道焊缝裂纹',
+                    image: 'img/管道焊缝.png',
+                    description: '焊接质量不良或长期运行导致焊缝出现裂纹，可能造成介质泄漏，引发安全事故。',
+                    hazardLevel: '高',
+                    preventiveMeasures: '焊接过程中严格执行焊接工艺，焊后进行无损检测；对运行中的管道定期进行焊缝检查。'
+                }
+            ]
+        };
+
+        // 当前案例索引
+        let currentCaseIndex = 0;
+        // 案例数组
+        let currentCases = [];
+
+        // 加载案例数据
+        function loadCases(level) {
+            // 更新标题
+            document.getElementById('caseTitle').textContent = `${level}作业安全隐患案例`;
+            
+            // 获取对应领域的案例数据并随机排序
+            currentCases = [...safetyCases[level]];
+            shuffleArray(currentCases);
+            
+            // 清空现有案例和指示器
+            const caseTrack = document.getElementById('caseTrack');
+            const indicators = document.getElementById('caseIndicators');
+            caseTrack.innerHTML = '';
+            indicators.innerHTML = '';
+            
+            // 生成案例卡片
+            currentCases.forEach((caseItem, index) => {
+                // 创建案例卡片
+                const caseCard = document.createElement('div');
+                caseCard.className = 'carousel-item';
+                caseCard.innerHTML = `
+                    <div class="bg-white/90 rounded-xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <div class="relative">
+                            <img src="${caseItem.image}" alt="${caseItem.title}" class="w-full h-64 object-cover">
+                            <div class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
+                                风险等级: ${caseItem.hazardLevel}
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col">
+                            <h3 class="text-xl font-bold text-primary mb-3">${caseItem.title}</h3>
+                            <div class="mb-4 flex-1">
+                                <h4 class="font-semibold text-text-dark mb-1">隐患描述</h4>
+                                <p class="text-text-dark/80">${caseItem.description}</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-text-dark mb-1">预防措施</h4>
+                                <p class="text-text-dark/80">${caseItem.preventiveMeasures}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                caseTrack.appendChild(caseCard);
+                
+                // 创建指示器
+                const indicator = document.createElement('div');
+                indicator.className = `carousel-indicator ${index === 0 ? 'active' : ''}`;
+                indicator.addEventListener('click', () => {
+                    goToCase(index);
+                });
+                indicators.appendChild(indicator);
+            });
+            
+            // 更新案例位置显示
+            updateCasePosition();
+            
+            // 绑定滑动控制事件
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                goToCase(currentCaseIndex - 1);
+            });
+            
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                goToCase(currentCaseIndex + 1);
+            });
+            
+            document.getElementById('firstCase').addEventListener('click', () => {
+                goToCase(0);
+            });
+            
+            document.getElementById('lastCase').addEventListener('click', () => {
+                goToCase(currentCases.length - 1);
+            });
+            
+            // 添加滑动手势支持
+            setupSwipeGestures();
+        }
+
+        // 随机打乱数组顺序
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // 切换到指定案例
+        function goToCase(index) {
+            if (index < 0) index = 0;
+            if (index >= currentCases.length) index = currentCases.length - 1;
+            
+            currentCaseIndex = index;
+            const track = document.getElementById('caseTrack');
+            track.style.transform = `translateX(-${index * 100}%)`;
+            
+            // 更新指示器状态
+            document.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
+                if (i === index) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+            
+            // 更新案例位置显示
+            updateCasePosition();
+            
+            // 添加动画效果
+            const currentCard = track.children[index];
+            currentCard.classList.add('slide-in');
+            setTimeout(() => {
+                currentCard.classList.remove('slide-in');
+            }, 500);
+        }
+
+        // 更新案例位置显示
+        function updateCasePosition() {
+            document.getElementById('casePosition').textContent = `${currentCaseIndex + 1} / ${currentCases.length}`;
+        }
+
+        // 设置滑动手势
+        function setupSwipeGestures() {
+            const container = document.querySelector('.carousel-container');
+            let startX, endX;
+            
+            container.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, false);
+            
+            container.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (endX - startX > swipeThreshold) {
+                    // 右滑，上一个案例
+                    goToCase(currentCaseIndex - 1);
+                } else if (startX - endX > swipeThreshold) {
+                    // 左滑，下一个案例
+                    goToCase(currentCaseIndex + 1);
+                }
+            }
+        }
+
+        // 初始化：检查URL参数加载对应案例
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const level = urlParams.get('level');
+            if (level && safetyCases[level]) {
+                currentLevel = level;
+                switchScene('caseScene');
+            }
+        });
+    </script>
+</body>
+</html>    
